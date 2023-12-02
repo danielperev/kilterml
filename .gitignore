@@ -24,6 +24,8 @@ MANIFEST
 # Jupyter Notebook
 .ipynb_checkpoints
 
+.vscode
+
 # Environments
 .env
 .venv
