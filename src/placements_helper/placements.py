@@ -39,8 +39,8 @@ class Placements:
         return hold
     
     def setup_placements(self):
-        self.all_data = json.load(open(self.file_path + "\\all_data.json", "r", encoding="utf8"))
-        self.all_impossible_placements = json.load(open(self.file_path + "\\impossible_holds.json", "r", encoding="utf8"))["placements"]
+        self.all_data = json.load(open(self.file_path / "all_data.json", "r", encoding="utf8"))
+        self.all_impossible_placements = json.load(open(self.file_path / "impossible_holds.json", "r", encoding="utf8"))["placements"]
         for climb in self.all_data:
             self.all_placements[climb["name"]] = [self.clean_hold(hold) for hold in climb["placements"] if "type" in hold]
 

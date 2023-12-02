@@ -1,10 +1,9 @@
-from placements import Placements
+from __future__ import absolute_import
+from ..placements_helper.placements import Placements
 import torch
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
-
-placements = Placements()
-# placements.plot_matrix_placements(placements.all_matrix_climbs, plot_size=1)
+from pathlib import Path
 
 #A climb matrix is a 36 x 36 matrix with 1-2 start holds, more than 2 middle holds, optional footholds, and at least one finish hold
 
@@ -127,3 +126,9 @@ def train_model(model,                # an instance of MLPModel
 
 # model = MyRNN(len(vocab), 128, 64, 2)
 
+if __name__ == "__main__":
+    root_dir = Path(__file__).resolve().parent.parent.parent
+    data_folder = root_dir / "data"
+
+    placements = Placements(data_folder)
+    # placements.plot_matrix_placements(placements.all_matrix_climbs)
