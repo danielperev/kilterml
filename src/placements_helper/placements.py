@@ -39,10 +39,14 @@ class Placements:
         return hold
     
     def setup_placements(self):
-        self.all_data = json.load(open(self.file_path / "all_data.json", "r", encoding="utf8"))
-        self.all_impossible_placements = json.load(open(self.file_path / "impossible_holds.json", "r", encoding="utf8"))["placements"]
+        with open(self.file_path / "all_data.json", "r", encoding="utf8") as all_data_file:
+            self.all_data = json.load(all_data_file)
+
+        with open(self.file_path / "impossible_holds.json", "r", encoding="utf8") as impossible_holds_file:
+            self.all_impossible_placements = json.load(impossible_holds_file)["placements"]
+
         for climb in self.all_data:
-            self.all_placements[climb["name"]] = [self.clean_hold(hold) for hold in climb["placements"] if "type" in hold]
+            self.all_placements[climb["name"]] = [self.clean_hold(hold) for hold in climb["placements"]]
 
     def setup_default_matrix(self):
         matrix = np.zeros(self.DEFAULT_MATRIX_SIZE, dtype=np.uint8)
