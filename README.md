@@ -2,4 +2,5 @@
 # Final Project for CSC413
 
 Jupyter notebook files in src/
-Data in data/
+
+Relevant data in data/
